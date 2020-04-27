@@ -21,6 +21,7 @@ public class MonthlyDataHelper {
                         String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
 
                         int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+                        monthlyData.setTotalDaysInMonth(days);
 
                         int tests = temp.getDailyTotal();
                         monthlyData.setMonth(month);
@@ -31,9 +32,11 @@ public class MonthlyDataHelper {
 
                     Map<Integer, List<CasesDataResponse.MonthlyData>> monthlyDatas =
                             monthlyDatas.stream().collect(Collectors.groupingBy(Collectors.counting(),CasesDataResponse.MonthlyData ::month));
-
+                    List<CasesDataResponse.MonthlyData> monthlyList = new ArrayList<CasesDataResponse.MonthlyData>();
                     monthlyDatas.forEach((key, value) -> {
-                        
+                         List<CasesDataResponse.MonthlyData> monthlyDataArrayList = (ArrayList<CasesDataResponse.MonthlyData>)value;
+                        monthlyDataArrayList.stream().collect(Collectors.groupingBy(CasesDataResponse.MonthlyData ::month, Collectors.summingInt(CasesDataResponse.MonthlyData::getTestAvgCounts)));
+
 
                     });
 

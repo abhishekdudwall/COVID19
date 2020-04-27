@@ -3,9 +3,8 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import lombok.AllArgsConstructor;
-
-import lombok.AllArgsConstructor;
+import java.io.Serializable;
+import java.util.Objects;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 /**
@@ -18,8 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(NON_NULL)
-public class CasesDataResponse {
-    private List<MonthlyData> monthlyDatas;
+public class CasesDataResponse implements Serializable {
     private List<MonthlyData> monthlyDatas;
 
     @Data
@@ -30,7 +28,22 @@ public class CasesDataResponse {
         private String month;
         private String type;
         private int testAvgCounts;
+        private int totalDaysInMonth;
 
+        @Override
+        public int hashCode() {
+            return Objects.hash();
+        }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            return true;
+        }
 
     }
 
