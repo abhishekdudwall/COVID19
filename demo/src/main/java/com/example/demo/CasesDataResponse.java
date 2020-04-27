@@ -28,19 +28,12 @@ public class CasesDataResponse {
     @JsonInclude(NON_NULL)
     public static class MonthlyData {
         private String month;
-        private List<DataType> dataTypes;
-
-    }
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @JsonInclude(NON_NULL)
-    public static class DataType {
         private String type;
-        private double testAvgCounts;
+        private int testAvgCounts;
+
 
     }
+
     public final static Comparator<MonthlyData> monthlyDataComparator = new Comparator<MonthlyData>() {
         @Override
         public int compare(MonthlyData a1, MonthlyData a2) {

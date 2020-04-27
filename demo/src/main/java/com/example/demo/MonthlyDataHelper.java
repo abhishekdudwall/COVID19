@@ -19,20 +19,19 @@ public class MonthlyDataHelper {
                         cal.setTime(date);
                         //Month Name
                         String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-                        monthlyData.setMonth(month);
 
                         int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 
                         int tests = temp.getDailyTotal();
-                        DataType dataType = new DataType();
-                        dataType.setTestAvgCounts(tests);
-                        monthlyData.setTypes((new ArrayList<dataTypes>().add(dataType)));
+                        monthlyData.setMonth(month);
+                        monthlyData.setTestAvgCounts(tests);
 
                         return monthlyData;
                     }).collect(Collectors.toList());
 
                     Map<List<CasesDataResponse.MonthlyData>,Integer> monthlyDatas =
                             monthlyDatas.stream().collect(Collectors.groupingBy(CasesDataResponse.MonthlyData ::month, Collectors.counting()));
+
 
 
 
