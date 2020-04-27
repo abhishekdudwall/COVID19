@@ -30,8 +30,8 @@ public class MonthlyDataHelper {
                         return monthlyData;
                     }).collect(Collectors.toList());
 
-                    Map<String, List<Student>> monthlyDatas =
-                            monthlyDatas.stream().collect(Collectors.groupingBy(w -> w.type));
+                    Map<String, List<CasesDataResponse.MonthlyData>> monthlyDatas =
+                            monthlyDatas.stream().collect(Collectors.groupingBy(w -> w.type, Collectors.counting()));
 
 
 
