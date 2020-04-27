@@ -38,7 +38,7 @@ public class CasesDataResponse {
     @JsonInclude(NON_NULL)
     public static class DataType {
         private String type;
-        private int testCounts;
+        private double testAvgCounts;
 
     }
     public final static Comparator<MonthlyData> monthlyDataComparator = new Comparator<MonthlyData>() {

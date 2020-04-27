@@ -21,9 +21,11 @@ public class MonthlyDataHelper {
                         String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
                         monthlyData.setMonth(month);
 
-                        int avgTests = temp.getDailyTotal();
+                        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+                        int tests = temp.getDailyTotal();
                         DataType dataType = new DataType();
-                        dataType.setTestCounts(avgTests);
+                        dataType.setTestAvgCounts(tests);
                         monthlyData.setTypes((new ArrayList<dataTypes>().add(dataType)));
 
                         return monthlyData;
