@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonInclude(NON_NULL)
 public class CasesDataResponse {
-    private String month;
+    private List<MonthlyData> monthlyDatas;
     private List<MonthlyData> monthlyDatas;
 
     @Data
@@ -27,7 +27,25 @@ public class CasesDataResponse {
     @AllArgsConstructor
     @JsonInclude(NON_NULL)
     public static class MonthlyData {
-        private String type;
-        private int avgTests;
+        private String month;
+        private List<Type> types;
+
     }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @JsonInclude(NON_NULL)
+    public static class Type {
+        private String type;
+        private int tests;
+
+    }
+    public final static Comparator<MonthlyData> monthlyDataComparator = new Comparator<MonthlyData>() {
+        @Override
+        public int compare(MonthlyData a1, MonthlyData a2) {
+            String month1 = a1.getMonth().toLowerCase();
+            String month2 = a2.getMonth().toLowerCase();
+            return month1.compareTo(month2);
+        }};
 }

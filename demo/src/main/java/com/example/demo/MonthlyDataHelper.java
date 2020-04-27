@@ -19,7 +19,7 @@ public class MonthlyDataHelper {
                         cal.setTime(date);
                         //Month Name
                         String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-                        monthlyData.setType(month);
+                        monthlyData.setMonth(month);
 
 
                         int avgTests = temp.getDailyTotal();
@@ -31,7 +31,7 @@ public class MonthlyDataHelper {
                     }).collect(Collectors.toList());
 
                     Map<List<CasesDataResponse.MonthlyData>,Integer> monthlyDatas =
-                            monthlyDatas.stream().collect(Collectors.groupingBy(CasesDataResponse.MonthlyData ::type, Collectors.counting()));
+                            monthlyDatas.stream().collect(Collectors.groupingBy(CasesDataResponse.MonthlyData ::month, Collectors.counting()));
 
 
 
