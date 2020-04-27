@@ -28,7 +28,7 @@ public class CasesDataResponse {
     @JsonInclude(NON_NULL)
     public static class MonthlyData {
         private String month;
-        private List<Type> types;
+        private List<DataType> dataTypes;
 
     }
 
@@ -36,9 +36,9 @@ public class CasesDataResponse {
     @NoArgsConstructor
     @AllArgsConstructor
     @JsonInclude(NON_NULL)
-    public static class Type {
+    public static class DataType {
         private String type;
-        private int tests;
+        private int testCounts;
 
     }
     public final static Comparator<MonthlyData> monthlyDataComparator = new Comparator<MonthlyData>() {
