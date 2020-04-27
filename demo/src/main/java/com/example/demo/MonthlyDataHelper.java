@@ -29,9 +29,13 @@ public class MonthlyDataHelper {
                         return monthlyData;
                     }).collect(Collectors.toList());
 
-                    Map<List<CasesDataResponse.MonthlyData>,Integer> monthlyDatas =
-                            monthlyDatas.stream().collect(Collectors.groupingBy(CasesDataResponse.MonthlyData ::month, Collectors.counting()));
+                    Map<Integer, List<CasesDataResponse.MonthlyData>> monthlyDatas =
+                            monthlyDatas.stream().collect(Collectors.groupingBy(Collectors.counting(),CasesDataResponse.MonthlyData ::month));
 
+                    monthlyDatas.forEach((key, value) -> {
+                        
+
+                    });
 
 
 
